@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会议纪要｜Javis 核心优势讨论 2026-11-24</title>
+<style>
+  :root{--bg:#f4f6fb;--card:#fff;--ink:#1f2937;--muted:#6b7280;--pri:#2563eb;--pri-l:#e8efff;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--line:#e5e7eb}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+  header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:36px 20px 70px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  header h1{margin:0 0 6px;font-size:28px}
+  header p{margin:0;opacity:.85}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .meta span{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:13px}
+  main{margin-top:-46px;padding-bottom:60px}
+  .card{background:var(--card);border-radius:14px;box-shadow:0 4px 18px rgba(30,58,138,.07);padding:22px 26px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:20px;display:flex;align-items:center;gap:10px}
+  .card h3{font-size:16px;margin:16px 0 6px;color:#1e3a8a}
+  .num{background:var(--pri);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+  ul,ol{padding-left:22px;margin:6px 0}
+  li{margin:3px 0}
+  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;margin-right:4px;vertical-align:1px}
+  .t-key{background:#dbeafe;color:#1e40af}.t-risk{background:#fee2e2;color:#991b1b}.t-tbd{background:#fef3c7;color:#92400e}.t-inf{background:#f3f4f6;color:#4b5563}
+  .concl{background:#f0fdf4;border-left:4px solid var(--ok);padding:8px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+  .note{background:#fffbeb;border-left:4px solid var(--warn);padding:8px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+  .debate{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:15px}
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .summary div{background:var(--pri-l);border-radius:10px;padding:12px 14px}
+  .summary b{display:block;color:#1e3a8a;margin-bottom:2px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}
+  th{background:#f8fafc;color:#334155;font-weight:600;white-space:nowrap}
+  .pri{font-weight:600;white-space:nowrap}.p1{color:var(--bad)}.p2{color:var(--warn)}.p3{color:var(--muted)}
+  .people{display:flex;flex-wrap:wrap;gap:10px}
+  .people div{border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:14px}
+  .people b{color:#1e3a8a}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:10px 20px 30px}
+  @media print{header{padding:20px}main{margin-top:0}.card{box-shadow:none;border:1px solid var(--line);break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Javis 核心优势讨论</h1>
+    <p>原来整理的“四个核心基础 + 五个维度”打动不了用户。这次讨论怎么用用户听得懂的话讲清楚 Javis（司徒）的核心优势，最后收敛为两点：<b>懂你</b>，以及<b>在懂你的基础上帮你快速查到信息</b>。另外讨论了上下文服务的实现难点和内测用户的服务方式。</p>
+    <div class="meta">
+      <span>📅 2026-11-24（周二）</span>
+      <span>⏱ 约 110 分钟</span>
+      <span>👥 Kevin、Allen、芒果、大胃</span>
+      <span>📄 来源：录音转写原文</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2><span class="num">★</span>一页摘要</h2>
+    <div class="summary">
+      <div><b>五个维度打动不了用户</b>讲技术、讲维度，用户听不懂，听起来“像骗子、像传销”。先让用户产生共鸣，再讲后面的东西。</div>
+      <div><b>核心优势一：懂你</b>用过大模型的人都知道：要先聊一阵模型才懂你，进入“黄金期”；聊久了又开始胡说，只能开新会话从头来。我们先读用户资料，一上来就进入黄金期，并把黄金期拉长。</div>
+      <div><b>核心优势二：帮你查</b>自己查资料费时费力，AI 查出来的东西也常常不能用。我们在懂你的基础上，用自己的爬虫能力快速查全、查准。</div>
+      <div><b>为什么单独挑“查”</b>懂你之后的好处很多，挑“查”是因为大家都懂、都经历过。</div>
+      <div><b>目标用户</b>AI 已经是工作的一部分、做过具体工作、能分辨结果好坏的人。只用 AI 问天气、查车票的人不是目标用户。</div>
+      <div><b>上下文要做成服务</b>按工作项分类，从用户画像、决策链、资料、业务地图里只取相关的部分拼成提示词，不能全部塞给模型。这是目前唯一需要真正想清楚的难点。</div>
+      <div><b>内测用户</b>找约 5 个真实目标用户，免费试用 7～14 天，测付费意愿（定价 1000 / 2000 元/月）。早 9 点到晚 9 点可打电话，其他时间发微信。</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">0</span>参会人</h2>
+    <div class="people">
+      <div><b>Kevin</b>｜主持，扮演目标用户追问，提出“两个核心优势”的讲法</div>
+      <div><b>Allen</b>｜负责开发（爬虫、上下文服务），讲了自己的使用感受和技术难点</div>
+      <div><b>芒果</b>｜参与核心优势讨论，负责收集内测用户反馈</div>
+      <div><b>大胃</b>｜参会</div>
+    </div>
+    <p class="note">转写稿只区分了“发言人1～4”，没有名字。根据内容推断：发言人1（追问、给框架）是 Kevin；发言人2（自己做了版本、做过爬虫、下周四请假）是 Allen；发言人3（办过活动、给家里做过学习平台、做内测反馈渠道）是芒果；发言人4 发言很少，可能是大胃。会议后半段（约 01:28 以后）的发言人标记比较乱，那部分只写内容，不写是谁说的。对应关系如果不对，请告诉我修改。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">1</span>开场：Allen 的使用感受</h2>
+    <ul>
+      <li>Allen 做完这一版后自己用了一下：把一堆文档交给它之后，只要给一个关键词，就能很快定位到文件和相关内容，对自己的工作确实有用，决定马上用起来。</li>
+      <li>Kevin：Allen 动手能力很强，不是我们的目标用户，我们不会针对这样的人推广。问题回到主题：<b>普通用户为什么要用我们？</b></li>
+      <li>Allen 的第一版说法：我们的门槛低。用豆包等产品，每次都要授权、让它读文件，操作复杂；我们的产品直接说话就行。</li>
+      <li>芒果的第一版说法：第一次用区别不大，用一周、一个月以后差别就出来了，“你用一个月后给你的东西会越来越好”。</li>
+    </ul>
+    <div class="debate"><b>Kevin 的反驳</b>：用户站在还没用的位置，想不到你说的这些点，“用一个月会变强”这类话他至少跟 20 个人说过，没用。“把你授权过的东西都记下来”对用户也没意义：他本来就是有资料就丢给 AI，不会每次拖 200 个文档。你说“我们自己分辨该用哪些文档”，用户会问：凭什么？</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">2</span>为什么“五个维度”讲不通</h2>
+    <ul>
+      <li>我们想做一个“像人一样的助手”，但没有讲清楚凭什么像人。</li>
+      <li>Allen 提过讲“能力更强”（比如联网查得更深）。芒果反对往模型能力上讲：用户不用就区分不出，也解释不了能力强弱。</li>
+      <li>Kevin：现在跟用户讲的东西听起来像骗子、像传销，“一个月收 2000 块给你造一个人出来”。很多人试用后不想用，看他们问的问题都是“你是谁、你能干什么、帮我查个最简单的事”。</li>
+      <li>五个维度、少提示词、技术原理，用户都听不懂；“交付质量高”这种说法也打动不了人。</li>
+      <li>Allen 提议做演示视频。Kevin：试过了，演示要踩到用户的点上才有用。</li>
+    </ul>
+    <div class="concl">结论：开篇不讲五个维度。先用用户自己经历过的痛点引起共鸣，再讲我们怎么解决。</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">3</span>用户都经历过的两个痛点</h2>
+    <h3>痛点一：自己查资料费时费力</h3>
+    <ul>
+      <li>不管用百度还是淘宝找，自己查资料都费时费力。Allen 补充：连在本地电脑里翻文件都很麻烦，文档太多。三人都认可。</li>
+    </ul>
+    <h3>痛点二：模型要先“磨合”，用久了又开始乱</h3>
+    <ul>
+      <li>在一个会话里，模型一开始不了解你，回复不太满意；聊了 3～5 轮之后进入<b>黄金期</b>：回复的内容、力度、格式和节奏都很匹配。</li>
+      <li>用久了之后（尤其上下文压缩过一次），模型开始出现幻觉、胡说。例子：出报告时给出不存在的引用，链接打不开，数据是编的。原因除了模型能力，还有会话里讨论分叉、要求越来越乱。</li>
+      <li>用户的应对是开新会话，但之前的东西全没了，又要从头磨合。很少有人会让它去读旧会话，就算读了，旧会话本身有矛盾也照样晕。</li>
+      <li>大家因此养成了习惯：AI 给的东西要再看一遍，每个链接都点开核对。</li>
+    </ul>
+    <h3>谁能体会到这两个痛点</h3>
+    <ul>
+      <li>不一定是天天用 AI 的人，而是<b>用 AI 做过一件具体工作、能分辨结果好坏的人</b>。例如改 PPT、出简单报告、润色文章、整理报表找数据。</li>
+      <li>Kevin 的父母天天用豆包，但做的是不擅长的事，分不出好坏，过程也很短，所以感受不到，也不是我们的用户。</li>
+      <li>做销售的人一旦让 AI 查某个市场能不能做、体量多大，就会有体会：要来回调很多次。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">4</span>核心优势一：懂你</h2>
+    <h3>“懂你”到底是什么</h3>
+    <ul>
+      <li>查得好不好，取决于了不了解用户的需求。例子：第一次帮人查资料，他说不行、再补一些；两次查询的能力没变，第二次满意是因为他把需求说得更详细了。如果第一次就知道他要什么，第一次就能满意。</li>
+      <li>“深”“全”都不是量化的词，由用户自己定义。Kevin 要求越全越好，查试卷也是越全越好；懂你之后，下次再查不用重新解释。</li>
+      <li>遇到新范围的事：可以先问清楚，也可以参考以前查的力度先给一版，不行再改，就像真人助理那样。</li>
+      <li>在一个会话里，提过一次要求后，再查类似的事情就会贴近你想要的；换一个会话又得从头来。这一点用户不用解释就能理解。</li>
+    </ul>
+    <h3>竞品怎么做“记忆”</h3>
+    <ul>
+      <li>GPT 等产品都在说自己有记忆，但记忆主要停留在单一会话里，会话上下文用到一定比例后才变聪明。</li>
+      <li>“龙虾”类产品把用户习惯写进 USER.md、AGENTS.md 一类文件，相当于在画用户画像，但要用户自己管理什么时候加、加什么，门槛太高。</li>
+      <li>AI 编程工具有全局和项目级的 AGENTS.md，同样要人去管。Kevin 举例：同一个要求（链接前后不要加符号）在三个项目里都说过，工具也不会自己做成全局规则。</li>
+      <li>Kevin 给了一些佐证资料（官方承认上下文压缩会丢细节、会编造文献，上下文超过一定长度后效果下降等），只是佐证“懂你”说的痛点是事实，会后发在群里。</li>
+    </ul>
+    <h3>我们怎么做到（跟用户讲的版本）</h3>
+    <ul>
+      <li>黄金期之所以出现，是因为用户把要求告诉了模型。我们通过用户的资料和对话，先整理出他的要求（用户画像、决策点、业务地图），所以<b>一开始就进入黄金期</b>，不用前面那段磨合。</li>
+      <li>我们管理会话、控制上下文：一件事保持在一件事里，不插进别的事，减少幻觉，<b>把黄金期拉长</b>。</li>
+      <li>不要求用户每次说明文档标准（他自己说的标准可能有矛盾），而是根据他实际的产出物来判断要求。</li>
+      <li>用户为什么要把资料给我们？答案就是：让黄金期来得更早、持续更久。真人助理也是这样学的。</li>
+    </ul>
+    <div class="concl">讲法：用过大模型的人都知道要先跟它磨合，聊久了又会乱、只能重开。我们一来就懂你，而且一直懂你。</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">5</span>核心优势二：在懂你的基础上帮你查</h2>
+    <ul>
+      <li>不是随便找个爬虫软件就能做到。前提是一个懂你的人在帮你，你不用再说“整理得不好，再调整一下”。</li>
+      <li>“查”是一个独立的能力：模型再懂你，也查不出它查不到的东西。例子：Allen 一个晚上查出 800 份试卷，Kevin 自己查可能要一个月。同样的模型，Kevin、芒果自己查数据，都没有 Allen 的爬虫查得全。</li>
+      <li>佐证：OpenAI 的深度研究一次要 5～30 分钟；有研究显示 AI 搜索答案错误率很高，用户刚开始会逐条核对。AI 有了联网之后“查”并没有变得无敌，可以拿自己熟悉的领域（比如一款游戏）试试，看能不能查出有用的结果。</li>
+      <li>同一个主题，不同身份要查的东西不一样：游戏开发者、想做生意的人、写攻略的人，要的报告完全不同，这就是“查”和“懂你”的结合。</li>
+      <li>例子：宋哥想知道人造钻石在美国好不好卖、什么款好卖、什么价格带好卖，不查怎么知道？</li>
+    </ul>
+    <div class="debate"><b>讨论</b>：Allen 认为“查”和“懂你”不在同一个维度，“查”只是懂你之后更好地用一种能力，懂你之后还能推出很多别的事。芒果一度觉得第二点和第一点重复。<br>Kevin：同意懂你之后有很多好处，五个维度在“懂你”里都能体现；单独挑出“查”，是因为大家都经历过、好懂。两点合起来讲：<b>一个懂你的助手，还能帮你快速查到信息</b>。</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">6</span>用场景检验：办一场活动</h2>
+    <ul>
+      <li>芒果：用豆包时，它给一套方案，只能参考，每一步还要自己另外去查、去补，大约只有 30% 能用。</li>
+      <li>用司徒：先把以前的方案丢给它，说明要什么样的活动、大概找什么样的场地，方案可用度能到 70%，剩下主要是定场地。</li>
+      <li>Kevin 补充：司徒知道你是做什么的、有什么喜好、以前办过什么活动。最后的差别都能归到这两点上。</li>
+    </ul>
+    <div class="concl">结论：不是推翻五个维度，而是先用这两点让用户有共鸣。因为懂你，所以零门槛、质量更好……有了共鸣，用户才会自己想到很多场景，愿意把资料授权给我们读。只要用上一天，就离不开了。怎么用是用户自己的事，我们不替他想。</div>
+    <p class="note">内部也一样：这两个核心优势是我们做所有事情的出发点。之前整理的四个核心基础和五个维度仍然有效，都是从这里出发的。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">7</span>能不能做到、和期望的距离</h2>
+    <ul>
+      <li>Kevin：能不能实现，看的是四件事：能不能画准用户画像、能不能做出准确的业务地图、能不能做出准确的决策链、资料解析准不准。真人助理也是从这些开始学的。</li>
+      <li>Allen：这四件能做，但做完以后能不能达到我们对产品的期望，还是个问号，要做出来体验。所以他要每天用、边用边感受（并为此申请一个麦克风）。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">8</span>爬虫：要做成通用能力</h2>
+    <ul>
+      <li>Allen：之前给宋哥的那一版主要针对海外市场调研定制，集成了很多第三方数据平台。放到国内不行：百度、京东、淘宝等平台基本不开放数据。国外平台大多有 API 或成熟的付费数据服务，国内生态封闭。</li>
+      <li>那 800 份试卷，很多是从网盘链接下载的整包，“没那么玄乎”。</li>
+      <li>Kevin：这是技术问题，跟查什么没关系。查人造钻石、电机还是光伏清洁机器人，用的技术一样：能查的地方都能查，不能查的地方都不能查。需要逐步补充淘宝、京东、拼多多、百度网盘、小红书、抖音等平台的方案，不要求一步到位。</li>
+      <li>即使只用无头浏览器抓免费文章，不用人去读，就已经很有优势。</li>
+      <li>产品是 SaaS 模式，爬虫作为我们控制的服务提供，不能部署在用户的机器上。Allen：目前里面有一个 MCP 的搜索服务，效果一般。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">9</span>会话管理与上下文服务</h2>
+    <h3>路由与工作项</h3>
+    <ul>
+      <li>先判断用户是在做某个工作项，还是在闲聊（问“你是谁、能干嘛”）。工作项 = 有交付物的事，不是闲聊。</li>
+      <li>路由模型判断是否启动工作项，只要说明了不同情况，模型判断很准。唯一麻烦的地方：用户从闲聊（例如了解纸巾行业有哪些品牌）聊着聊着转成工作项（例如要一份纸巾耗材分析报告）。</li>
+      <li>同一工作项里来回问，同样会出现上下文过长的问题，需要处理，但相对简单。</li>
+    </ul>
+    <h3>难点：取哪些画像、走哪条决策链</h3>
+    <ul>
+      <li>用户画像会越来越丰富，一个工作项要从画像里摘哪些出来、选哪条决策链，比较难。</li>
+      <li>Kevin 的方案：<b>工作项分类</b>。和标签一样动态生成，但每一类<b>互斥</b>（标签可以一个文档多个，工作项分类不行），更像排他的树状结构。工作项类型决定从画像里取什么、走哪条决策链。</li>
+      <li>画像里可能出现矛盾，例如对某类事要求细致、对另一类事要求宽松。</li>
+      <li>原则上用户画像和决策链的内容不应该重复。例如“对格式要求很严格”应该放在画像里还是决策链里，需要考虑。</li>
+      <li>Allen 提出：用户授权的文件夹里可能没有某方面的资料，这时要不要总结，需要设计。</li>
+    </ul>
+    <h3>做成一个服务</h3>
+    <ul>
+      <li>这套东西要做成一个<b>服务（接口）</b>：调用方告诉它“用户现在要做这件事”，它返回应该给模型的提示词内容。里面包括从资料、用户画像、决策链、业务地图里取出的相关部分。这样才能做到用户少给提示词。</li>
+      <li>不能把所有画像和业务地图都塞进去（恨不得 300K 一次丢上去），要先按工作类型区分，再取应该取的数据。</li>
+      <li>分工：决策链、用户画像、业务地图由模型生成；读资料由代码加模型完成。Kevin 会把各部分怎么处理、怎么用的要求写清楚，Allen 先按要求搭起来，上线后根据用户吐槽再优化（必要时用插件 / extension 加硬性限制）。</li>
+      <li>Allen：拿到用户需求后，怎么从查到的资料总结成落地的提示词，还要想一下。Kevin：最保守的做法是用模型来做，但这个模型也要有大量限制和要求。</li>
+    </ul>
+    <div class="concl">这是目前唯一需要真正想清楚的实现问题。</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">10</span>内测用户与服务</h2>
+    <ul>
+      <li>产品分基础版和另一个版本。内测完成后，找真实的目标用户来试用。</li>
+      <li><b>试用</b>：免费试用 7～14 天，目的是测付费意愿。定价 1000 元和 2000 元两档（每月），看目标用户用了半个月左右后愿意付多少钱。</li>
+      <li><b>挑人原则</b>：必须是目标用户，AI 已经是工作的一部分（会抱怨 AI“像白痴一样难用”的人就是），并且愿意反馈问题。最怕“嘴上说都挺好、有问题也不说”的人。不要找来薅羊毛的朋友。</li>
+      <li>候选：菲菲提到的宠物店相关的人；宋哥。</li>
+      <li><b>服务方式</b>：芒果作为收集反馈的渠道，以后可能带客服团队收集客户反馈，由我们为专属客户（每月 2000 元）实现。早 9 点到晚 9 点可以打电话（鼓励打电话），晚 9 点以后发微信或留言。</li>
+      <li><b>自动回复</b>：要做一个自动回复微信的东西（企业微信有接口）。芒果认为现阶段还是人亲自聊好一些。Kevin：自动回复是产品的一部分，不是玩具，现在就要开始打磨，人和自动回复的流程一起打磨。</li>
+      <li><b>回复原则</b>：回复好了，大事变小事；回复不好，小事变大事。不要跟用户讲维度、实现原理，用户只要解决问题。用户要大概的解决方案时可以给思路，但不能瞎答，答不出来就转技术。</li>
+      <li><b>为什么要极致服务</b>：前 3～5 个用户比较好找，做到六七成他们就会付钱；从 5 个到 30 个用户，需要超出所有厂家的服务。新品牌一穷二白，只能靠极致的用户体验。到 30 个之后就好办了。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">11</span>其他事项</h2>
+    <ul>
+      <li><b>Allen 的交付和请假</b>：Kevin 明天中午前给出上下文服务的要求，Allen 尽快做出一个版本（会上提到周五）。Allen 下周四可能一天不在线（陪朋友去徒步），会提前通知，其他时间都在线。大家提醒注意安全。</li>
+      <li><b>宠物店 / 宋哥的合作</b>：如果对方来谈，可以说明会有一套月费制的产品结合司徒，帮他们出方案、出策略、做市场调研。宋哥太太的生意国内玩法比较成熟，想做海外的话不做直播，走独立站引流加自媒体。</li>
+      <li><b>小周的事</b>：芒果扫码登录时选错了公司，要再联系小周（他比较忙）。费用由托管银行从绑定的公司账户直接扣，大约三天内扣款，保证账户有钱即可。</li>
+      <li><b>光伏清洁机器人</b>：沟通过的一家合作方经验丰富，能做完整产品（含外观工业设计），对光伏清洁机器人很感兴趣。对方首先要确认这个人、这件事靠不靠谱，因为遇到过太多白嫖或做完卖不出去的情况。（转写到这里结束）</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">12</span>待办事项</h2>
+    <table>
+      <tr><th>#</th><th>事项</th><th>负责人</th><th>时间</th><th>优先级</th></tr>
+      <tr><td>1</td><td>对外介绍改用“两个核心优势”的讲法（懂你 + 帮你查），不再开篇讲五个维度</td><td>全体</td><td>即日起</td><td class="pri p1">高</td></tr>
+      <tr><td>2</td><td>写清楚上下文服务的要求：决策链、用户画像、业务地图、资料各自怎么处理、怎么用</td><td>Kevin</td><td>明天（11/25）中午前</td><td class="pri p1">高</td></tr>
+      <tr><td>3</td><td>按要求搭建上下文服务（接口）：按工作项分类取画像、决策链、资料、业务地图，生成提示词</td><td>Allen</td><td>尽快，会上提到周五 <span class="tag t-inf">推断</span></td><td class="pri p1">高</td></tr>
+      <tr><td>4</td><td>设计工作项分类（动态生成、类别互斥）；理清用户画像和决策链的边界，避免重复</td><td>Kevin、Allen <span class="tag t-inf">推断</span></td><td>随上下文服务</td><td class="pri p1">高</td></tr>
+      <tr><td>5</td><td>自己每天使用产品、边用边感受，评估能否达到产品期望（申请麦克风）</td><td>Allen</td><td>持续</td><td class="pri p2">中</td></tr>
+      <tr><td>6</td><td>逐步补充国内平台的爬虫方案（淘宝、京东、拼多多、百度网盘、小红书、抖音等），爬虫作为服务端能力</td><td>Allen <span class="tag t-inf">推断</span></td><td>持续</td><td class="pri p2">中</td></tr>
+      <tr><td>7</td><td>挑选内测目标用户（约 5 个），安排 7～14 天免费试用，测 1000 / 2000 元定价的付费意愿</td><td>未定</td><td>内测完成后</td><td class="pri p2">中</td></tr>
+      <tr><td>8</td><td>建立用户反馈与服务流程（电话 9:00–21:00，其他时间微信），同时打磨微信自动回复</td><td>芒果</td><td>试用开始前</td><td class="pri p2">中</td></tr>
+      <tr><td>9</td><td>联系小周，重新扫码选对公司，确认付费方式</td><td>芒果</td><td>明天</td><td class="pri p3">低</td></tr>
+    </table>
+    <p class="note">会上没有明确负责人或时间的事项，按对话内容推断，已标“推断”或“未定”。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">!</span>整理说明</h2>
+    <ul>
+      <li>转写稿同音错字较多，已按上下文理解：“司徒 / 石头 / 湿毒 / 斯图 / 思图 / 视图 / 师傅”= Javis 助理；“绘画 / 汇报”= 会话；“黄明麒 / 黄金圈 / 发动机”= 黄金期；“幻想”= 幻觉；“茶”= 查；“豆瓣 / 多包 / 多宝”= 豆包；“dip sip”= DeepSeek；“集资词 / 吉林市 / 提示字”= 提示词；“扒手 / 爬手 / 爬山 / 爬树”= 爬虫；“AG点MD / 优秀点ND”= AGENTS.md / USER.md；“OAI 的 new search”= OpenAI 深度研究。</li>
+      <li>“龙虾”按原文保留，指需要用户自己维护记忆文件的 AI 助手。“洛克巴黎”“我body”“八点”等竞品名称无法确定，文中统称“其他 AI 产品”。</li>
+      <li>与业务无关的玩笑、粗口和闲聊已略去。</li>
+    </ul>
+  </section>
+
+</main>
+<footer>Javis 核心优势讨论纪要 · 2026-11-24 · 根据录音转写整理</footer>
+</body>
+</html>
